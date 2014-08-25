@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="Requestor">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@Section['Title'];</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/autocomplete.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet">
+</head>
+<body ng-controller="mainController">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Requestor - HTTP request tool</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/requestor">Requestor</a></li>
+                    <li><a href="/requestor/import">Import</a></li>
+                    <li><a href="/requestor/export">Export</a></li>
+                    <li><a href="/requestor/settings">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="MainContainer" class="container-fluid">
+        <div class="content-container">
+            @Section['Content'];
+        </div>
+    </div>
+    <script src="/js/jquery-1.9.0.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/underscore.js"></script>
+    <script src="/js/angular/angular.js"></script>
+    <script src="/js/modules/autocomplete.js"></script>
+    <script src="/js/modules/angular-requestor-main.js"></script>
+    <script src="/js/services/PersistenceService.js"></script>
+    <script src="/js/services/SettingsService.js"></script>
+    <script src="/js/controllers/mainController.js"></script>
+    @Section['Scripts'];
+</body>
+</html>

@@ -1,0 +1,195 @@
+﻿/* ----------------- Main styles ------------------*/
+body {
+    padding-top: 50px;
+}
+
+#req-response {
+    min-height: 300px;
+}
+
+#req-settings-more div {
+    padding-left: 30px;
+}
+
+    #req-settings-more div label {
+        width: 180px;
+    }
+
+#req-settings-container > div {
+    padding-top: 5px;
+}
+
+#req-left-container {
+    background: #F6F6F6;
+}
+
+#req-right-container {
+    padding: 10px;
+}
+
+#req-left-container a {
+    text-align: center;
+}
+
+.req-item {
+    border-left: 3px solid #CCC;
+    padding-left: 3px;
+}
+
+    .req-item:hover {
+        background-color: #F3F3F3;
+    }
+
+#results {
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+/* ----------------- Input styles ------------------*/
+.settings-separator {
+    padding: 10px;
+    text-align: center;
+}
+
+input, select {
+    min-height: 20px;
+    width: 150px;
+}
+
+    input[name=url] {
+        width: 100%;
+    }
+
+label {
+    line-height: 30px;
+    margin: 0;
+    padding-right: 15px;
+}
+
+button {
+    font-family: arial;
+    color: #333333 !important;
+    font-size: 14px;
+    padding: 5px 15px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 2px solid #87C3CC;
+    background: #FFFFFF;
+}
+
+    button:hover {
+        color: #000000 !important;
+        background: #F6F6F6;
+    }
+
+    button[disabled] {
+        border: 2px solid #CCC;
+    }
+
+        button[disabled]:hover {
+            background: #FFFFFF;
+        }
+
+textarea {
+    height: 100px;
+}
+/* ----------------- Table styles ------------------*/
+
+table {
+    font-size: 12px;
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #EEE;
+}
+
+    table th {
+        font-size: 14px;
+        font-weight: normal;
+        color: #039;
+        padding: 12px 15px;
+    }
+
+    table td {
+        color: #669;
+        border-top: 1px solid #e8edff;
+        padding: 10px 15px;
+    }
+
+    table tr:hover td {
+        color: #339;
+        background: #eff2ff;
+    }
+
+/* ----------------- Link styles ------------------*/
+
+a {
+    cursor: pointer;
+}
+
+/* ----------------- Reusable styles ------------------*/
+
+.delete {
+    font-weight: bold;
+    color: #c30000;
+}
+
+    .delete:hover {
+        color: #eb3232;
+    }
+
+.block {
+    display: block;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+
+.pointer {
+    cursor: pointer;
+}
+
+hr.short {
+    width: 30%;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #666;
+    margin: 5px auto 5px auto;
+}
+
+.error {
+    color: #f15f5f;
+}
+
+.success {
+    color: #36b23c;
+}
+
+.req-GET {
+    border-color: #fffc46;
+}
+
+.req-POST {
+    border-color: #7468ff;
+}
+
+.req-PUT {
+    border-color: #75ff54;
+}
+
+.req-DELETE {
+    border-color: #ff6136;
+}
+
+.margin10 {
+    margin: 5px 5px;
+}

@@ -1,0 +1,50 @@
+﻿@Master['master.sshtml']
+@Section['Content']
+<div class="container" ng-controller="exportController">
+    <h1>Export</h1>
+    <div class="row">
+        <h4>Full export</h4>
+        <div class="col-md-12">
+            <button name="exportEverything" ng-click="exportEverything()">Export everything</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <h4>Partial exports</h4>
+        <div class="col-md-4">
+            <button name="exportCollections" ng-click="exportCollections()">Export collections</button>
+        </div>
+        <div class="col-md-4">
+            <button name="exportHistory" ng-click="exportHistory()">Export history</button>
+        </div>
+        <div class="col-md-4">
+            <button name="exportSettings" ng-click="exportSettings()">Export settings</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <h4>Single collection export</h4>
+        <div class="col-md-4">
+            <select name="exportCollectionSelect" ng-model="collectionToExport" required ng-options="coll.collection for coll in collections"></select>
+        </div>
+        <div class="col-md-8">
+            <button name="exportHistory" ng-click="exportCollection()">Export collection</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <h4>Download link</h4>
+        <div class="col-md-12" id="results">
+        </div>
+    </div>
+</div>
+@EndSection
+@Section['Title']
+    Requestor - app
+@EndSection
+@Section['Scripts']
+<script src="/js/services/PersistenceService.js"></script>
+<script src="/js/services/RequestHistoryService.js"></script>
+<script src="/js/services/RequestStorageService.js"></script>
+<script src="/js/controllers/exportController.js"></script>
+@EndSection

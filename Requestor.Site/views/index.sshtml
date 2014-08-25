@@ -1,0 +1,8 @@
+﻿@Master['master.sshtml']
+@Section['Content']
+    <h1>THIS ... IS ... REQUESTOR ...</h1>
+    <p>Go to the <a href="/requestor">app</a></p>
+@EndSection
+@Section['Title']
+    Requestor - index
+@EndSection

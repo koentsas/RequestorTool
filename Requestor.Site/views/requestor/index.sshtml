@@ -1,0 +1,22 @@
+﻿@Master['master.sshtml']
+@Section['Content']
+<div id="req-container" class="row-fluid">
+    <div id="req-left-container" class="span2" ng-show="isLocalStoragePossible()" ng-controller="requestStorageController">
+        @Partial['partials/requestStoragePartial.sshtml']
+    </div>
+    <div id="req-right-container" ng-class="isLocalStoragePossible()?'span10':'span12'" ng-controller="requestorController">
+        @Partial['partials/requestorPartial.sshtml']
+    </div>
+</div>
+@EndSection
+@Section['Title']
+    Requestor - app
+@EndSection
+@Section['Scripts']
+<script src="/js/services/AppHttpService.js"></script>
+<script src="/js/services/SharedObjectsService.js"></script>
+<script src="/js/services/RequestHistoryService.js"></script>
+<script src="/js/services/RequestStorageService.js"></script>
+<script src="/js/controllers/requestorController.js"></script>
+<script src="/js/controllers/requestStorageController.js"></script>
+@EndSection

@@ -1,0 +1,143 @@
+﻿<div id="req-settings-container">
+    <div class="row">
+        <div class="span3 row">
+            <label for="method" class="span6">
+                Method: 
+            </label>
+            <select class="span6" name="method" ng-model="requestConfig.method" required ng-options="method for method in methods"></select>
+        </div>
+        <div class="span9 row">
+            <label for="url" class="span2">
+                Url: 
+            </label>
+            <input class="span10" placeholder="url" name="url" type="text" required pattern="https?://.+" ng-model="requestConfig.url" />
+        </div>
+    </div>
+    <div class="row" ng-show="'POSTPUT'.contains(requestConfig.method)">
+        <div class="span12 row">
+            <label for="data" class="span3">
+                Request body: 
+            </label>
+
+        </div>
+        <div class="span12 row">
+            <textarea class="span12" name="data" ng-model="requestConfig.data"></textarea>
+        </div>
+    </div>
+    <div id="req-settings-more" class="row" ng-show="moreSettings">
+        <div>
+            <label for="urlParamName">
+                Add url parameters: 
+            </label>
+            <input placeholder="Url parameter name" name="urlParamName" type="text" ng-model="curParam.name" />
+            <input placeholder="Url parameter value" name="urlParamValue" type="text" ng-model="curParam.value" />
+            <button ng-click="addParam()">Add</button>
+        </div>
+        <div>
+            <label for="HeaderName">
+                Add Headers: 
+            </label>
+            <autocomplete name="HeaderName" ng-model="curHeader.name" data="htmlHeaders"></autocomplete>
+            <input placeholder="Header value" name="HeaderValue" type="text" ng-model="curHeader.value" />
+            <button ng-click="addHeader()">Add</button>
+        </div>
+    </div>
+    <div class="settings-separator">
+        <a class="span12" style="cursor: pointer;" ng-click="moreSettings = !moreSettings" ng-hide="moreSettings">More</a>
+        <a class="span12" style="cursor: pointer;" ng-click="moreSettings = !moreSettings" ng-show="moreSettings">Less</a>
+    </div>
+    <button ng-click="makeRequest()">Submit</button>
+</div>
+<hr />
+<div id="req-overview">
+    <div class="row">
+        <strong class="span1">Overview: </strong>
+        <div class="span11">
+            {{requestConfig.method}} 
+                    {{requestConfig.url}}
+        </div>
+    </div>
+    <div class="row" ng-show="isEmptyObject(requestConfig.params) || isEmptyObject(requestConfig.headers)">
+        <div class="span6" ng-show="isEmptyObject(requestConfig.params)">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter name</th>
+                        <th>Parameter value</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, value) in requestConfig.params">
+                        <td>{{key}}</td>
+                        <td>{{value}}</td>
+                        <td><a style="cursor: pointer;" ng-click="removeParam(key)">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="span6" ng-show="isEmptyObject(requestConfig.headers)">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Header name</th>
+                        <th>Header value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, value) in requestConfig.headers">
+                        <td>{{key}}</td>
+                        <td>{{value}}</td>
+                        <td><a style="cursor: pointer;" ng-click="removeHeader(key)">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<hr />
+<div id="req-response">
+    <div class="row">
+        <strong class="span1">Status: </strong>
+        <span class="span11" ng-class="isSuccessStatusCode() ? 'success':'error'">{{status}} {{status_message}}
+                    <img ng-show="loading.counter > 0" src="/css/images/ajax-loader.gif" />
+        </span>
+    </div>
+    <div class="row">
+        <strong class="span1">Reponse: </strong>
+        <div class="span11">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="#raw" role="tab" data-toggle="tab">Raw</a></li>
+                <li><a href="#html" role="tab" data-toggle="tab" ng-show="html">HTML</a></li>
+                <li><a href="#json" role="tab" data-toggle="tab" ng-show="json">JSON</a></li>
+                <li><a href="#headers" role="tab" data-toggle="tab">Response headers</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="raw">{{response}}</div>
+                <div class="tab-pane" id="html" ng-bind-html="response_html"></div>
+                <div class="tab-pane" id="json">
+                    <pre ng-bind-html="response_json"></pre>
+                </div>
+                <div class="tab-pane" id="headers">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Header name</th>
+                                <th>Header value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, value) in response_headers">
+                                <td>{{key}}</td>
+                                <td>{{value}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

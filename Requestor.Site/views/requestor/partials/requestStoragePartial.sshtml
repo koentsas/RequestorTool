@@ -1,0 +1,34 @@
+﻿<div>
+    <h4 class="margin10">Saved requests</h4>
+    <input class="margin10" type="text" style="width: 80px; margin-right: 15px;" ng-model="collectionToAdd" />
+    <a class="margin10" ng-click="addCollection()">Add collection</a>
+    <hr />
+    <div ng-repeat="coll in requestStorage">
+        <p class="margin10">
+            <strong class="pointer" ng-click="toggleCollection(coll.collection)">{{coll.collection}} ({{coll.requests.length}})</strong>
+            <a class="float-right" ng-click="addToStorage(coll.collection)">Add current</a>
+        </p>
+        <div class="req-item pointer" ng-class="'req-' + req.method" ng-show="collectionIsShown(coll.collection)" ng-repeat="req in coll.requests">
+            <span ng-click="fillRequest(req)">
+                {{req.method}}<br />
+                {{req.url.substring(req.url.indexOf('/', 3))}}
+            </span>
+            <a class="delete block" ng-click="removeFromStorage(coll.collection, req)">Remove request</a>
+        </div>
+        <hr class="short" />
+        <a class="delete block" ng-click="removeCollection(coll.collection)">Remove collection</a>
+        <hr />
+    </div>
+</div>
+<hr />
+<div>
+    <h4 class="margin10">Request history</h4>
+    <div class="req-item pointer" ng-class="'req-' + req.method" ng-repeat="req in requestHistory">
+        <span ng-click="fillRequest(req)">
+            {{req.method}}<br />
+            {{req.url.substring(req.url.indexOf('/', 10))}}
+        </span>
+    </div>
+    <a class="delete block" ng-click="clearHistory()">Clear history</a>
+</div>
+<hr />

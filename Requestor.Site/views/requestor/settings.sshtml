@@ -1,0 +1,45 @@
+﻿@Master['master.sshtml']
+@Section['Content']
+  
+<div class="container" ng-controller="settingsController">
+    <h1>Settings</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label for="maxNumberOfRequestsInHistory">Max items in history (less for better performance): </label>
+            </div>
+            <div class="col-md-6">
+                <input name="maxNumberOfRequestsInHistory" ng-model="settings.maxNumberOfRequestsInHistory" type="number" ng-change="persistSettings()" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label for="maxNumberOfHistoryRequestsShown">Max history items shown: </label>
+            </div>
+            <div class="col-md-6">
+                <input name="maxNumberOfHistoryRequestsShown" ng-model="settings.maxNumberOfHistoryRequestsShown" type="number" ng-change="persistSettings()" />
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label for="baseUrl">Base url: </label>
+            </div>
+            <div class="col-md-6">
+                <input name="baseUrl" ng-model="settings.baseUrl" type="text" maxlength="255" ng-change="persistSettings()" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span ng-class="messageType">{{message}}</span>
+        </div>
+    </div>
+</div>
+@EndSection
+@Section['Title']
+    Requestor - settings
+@EndSection
+@Section['Scripts']
+<script src="/js/controllers/settingsController.js"></script>
+@EndSection
